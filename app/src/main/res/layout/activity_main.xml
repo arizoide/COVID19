@@ -14,4 +14,11 @@
         android:clickable="true"
         android:onClick="abrirCadastroPaciente"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <Button
+        android:id="@+id/btnVerPacientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Ver Pacientes" />
 </LinearLayout>
