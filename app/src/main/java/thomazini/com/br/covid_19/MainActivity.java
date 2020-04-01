@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent telaCadastroPaciente = new Intent(this, CadastroPacienteActivity.class);
         startActivity(telaCadastroPaciente);
     }
+
+    public void abrirListarPacientes(View view){
+        Intent telaListarPacientes = new Intent(this, JoseActivity.class);
+        startActivity(telaListarPacientes);
+    }
 }

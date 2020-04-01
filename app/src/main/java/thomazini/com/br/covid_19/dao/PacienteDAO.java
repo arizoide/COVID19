@@ -2,7 +2,11 @@ package thomazini.com.br.covid_19.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import thomazini.com.br.covid_19.model.Paciente;
 
@@ -27,5 +31,28 @@ public class PacienteDAO {
         sqLiteDatabase.insert("PACIENTE", null, valores);
 
         sqLiteDatabase.close();
+    }
+
+    public List<Paciente> listar() {
+        sqLiteDatabase = sqLiteHelper.getReadableDatabase();
+
+        String sql = "SELECT * FROM PACIENTE;";
+
+        Cursor c = sqLiteDatabase.rawQuery(sql, null);
+
+        List<Paciente> pacientes = new ArrayList<>();
+
+        while(c.moveToNext()){
+            Paciente pac = new Paciente();
+            pac.setId(c.getInt(c.getColumnIndex("ID")));
+            pac.setNome(c.getString(c.getColumnIndex("NOME")));
+            pac.setIdade(c.getInt(c.getColumnIndex("IDADE")));
+            pac.setCidade(c.getString(c.getColumnIndex("CIDADE")));
+            pac.setEstado(c.getString(c.getColumnIndex("ESTADO")));
+
+            pacientes.add(pac);
+        }
+
+        return pacientes;
     }
 }

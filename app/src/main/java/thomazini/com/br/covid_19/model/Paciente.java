@@ -14,6 +14,9 @@ public class Paciente {
         this.estado = estado;
     }
 
+    public Paciente() {
+    }
+
     public Integer getId() {
         return id;
     }
@@ -57,7 +60,7 @@ public class Paciente {
     @Override
     public String toString() {
         return "Paciente{" +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", idade=" + idade +
                 '}';
     }
