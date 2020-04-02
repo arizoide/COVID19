@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".JoseActivity">
 
+    <EditText
+        android:id="@+id/editTextBuscaNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Digite um nome"
+        android:inputType="textPersonName" />
+
     <ListView
         android:id="@+id/listViewPacientes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editTextBuscaNome">
+
+    </ListView>
 </RelativeLayout>
