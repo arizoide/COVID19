@@ -86,4 +86,39 @@ public class PacienteDAO {
 
         return pacientes;
     }
+
+    public Paciente getById(int pacienteId) {
+        sqLiteDatabase = sqLiteHelper.getReadableDatabase();
+
+        String sql = "SELECT * FROM PACIENTE WHERE ID =" + pacienteId;
+
+        Cursor c = sqLiteDatabase.rawQuery(sql, null);
+
+        Paciente paciente = null;
+
+        while(c.moveToNext()){
+            paciente = new Paciente();
+            paciente.setId(c.getInt(c.getColumnIndex("ID")));
+            paciente.setNome(c.getString(c.getColumnIndex("NOME")));
+            paciente.setIdade(c.getInt(c.getColumnIndex("IDADE")));
+            paciente.setCidade(c.getString(c.getColumnIndex("CIDADE")));
+            paciente.setEstado(c.getString(c.getColumnIndex("ESTADO")));
+        }
+
+        return paciente;
+    }
+
+    public void updatePacient(Paciente pac) {
+        sqLiteDatabase = sqLiteHelper.getWritableDatabase();
+
+        ContentValues valores = new ContentValues();
+        valores.put("NOME", pac.getNome());
+        valores.put("IDADE", pac.getIdade());
+        valores.put("CIDADE", pac.getCidade());
+        valores.put("ESTADO", pac.getEstado());
+
+        sqLiteDatabase.update("PACIENTE", valores, "ID=?", new String[] {pac.getId().toString()});
+
+        sqLiteDatabase.close();
+    }
 }

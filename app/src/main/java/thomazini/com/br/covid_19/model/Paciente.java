@@ -17,6 +17,14 @@ public class Paciente {
     public Paciente() {
     }
 
+    public Paciente(Integer id, String nome, Integer idade, String cidade, String estado) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -59,9 +67,6 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                '}';
+        return "Paciente - " + nome;
     }
 }

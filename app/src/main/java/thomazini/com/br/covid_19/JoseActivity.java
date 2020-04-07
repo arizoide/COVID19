@@ -33,7 +33,12 @@ public class JoseActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(JoseActivity.this, "Clique rapido", Toast.LENGTH_LONG).show();
+                //Recupera o item que foi clicado na posicao
+                Paciente pac = (Paciente) parent.getItemAtPosition(position); //Converte usando cast
+
+                Intent cadastroPaciente = new Intent(JoseActivity.this, CadastroPacienteActivity.class);
+                cadastroPaciente.putExtra("ID_PACIENTE", pac.getId().toString());
+                startActivity(cadastroPaciente);
             }
         });
 
